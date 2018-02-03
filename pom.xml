@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.walmartlabs.sca</groupId>
+	<artifactId>kafka-router</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>kafka-router Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<slf4j.version>1.7.21</slf4j.version>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<camel.version>2.20.2</camel.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>0.11.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-kafka</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<!-- we need servletlistener to bootstrap Camel -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servletlistener</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<!-- we use the servlet component in the Camel application -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>kafka-router</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Repository Management -->
+
+	<distributionManagement>
+		<repository>
+			<id>pangaea_releases</id>
+			<url>http://gec-maven-nexus.walmart.com/nexus/content/repositories/pangaea_releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>pangaea_snapshots</id>
+			<url>http://gec-maven-nexus.walmart.com/nexus/content/repositories/pangaea_snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:git:https://gecgithub01.walmart.com/a0b013g/kafka-router.git</connection>
+		<developerConnection>scm:git:https://gecgithub01.walmart.com/a0b013g/kafka-router.git</developerConnection>
+		<url>https://gecgithub01.walmart.com/a0b013g/kafka-router</url>
+		<tag>HEAD</tag>
+	</scm>
+
+</project>
